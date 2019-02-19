@@ -11,6 +11,9 @@ RUN npm run build
 
 # The FROM statement stops the previous block
 FROM nginx
+# EXPOSE is used by elastic beanstalk
+EXPOSE 80
+
 # /user/share/nginx/html is the recommended directory for nginx
 COPY --from=builder /app/build /user/share/nginx/html
 # We don't need to explicitely execute anything. nginx will do the rest.
