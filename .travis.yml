@@ -5,7 +5,7 @@ services:
 # build out docker image before it runs
 # We will first run our dev version so we can test
 before_install:
-  - docker build -i cmcaboy/docker-react -f Dockerfile.dev .
+  - docker build -t cmcaboy/docker-react -f Dockerfile.dev .
 
 # contains the commands to run our test suite
 # IF any command returns a non-zero value, travis
