@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# Since we are using references, we dont need this line right now. However, in the future
+# we may need this or we may need this for production. It will act as a good reminder.
+COPY . . 
+
+CMD ["npm","run","start"]
