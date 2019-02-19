@@ -13,3 +13,17 @@ before_install:
 # -- --coverage will execute npm run test just once in non-interactive mode
 script:
   - docker run cmcaboy/docker-react npm run test -- --coverage
+
+# travis comes preconfigured to deploy to certain providers
+# travis will do a lot of the work automatically
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: "docker" # name of elastic beanstalk app
+  env: "Docker-env" # elastic beanstalk environment
+  bucket_name: elasticbeanstalk-us-east-1-292160338903 # S3 bucket name
+  bucket_path: "docker" # your app's name
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
